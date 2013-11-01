@@ -1,4 +1,4 @@
-shutupworthy
+Upgrayedd
 ============
 
-Makes certain web pages less annoying.
+Chrome extension that makes websites less annoying.

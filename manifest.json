@@ -18,14 +18,14 @@
       "19": "images/icon-19.png",
       "38": "images/icon-38.png"
     },
-    "default_title": "shutupworthy",
+    "default_title": "Upgrayedd",
     "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "matches": [
-        "http://*.upworthy.com/*",
-        "https://*.upworthy.com/*"
+          "http://*",
+          "https://*"
       ],
       "css": [
         "styles/main.css"
@@ -38,6 +38,7 @@
     }
   ],
   "permissions": [
-    "http://*.upworthy.com/"
+      "http://*",
+      "https://*"
   ]
 }
