@@ -7,6 +7,8 @@ lib-cov
 *.pid
 *.gz
 
+upgrayedd.zip
+
 .idea
 .DS_Store
 *.sass-cache

@@ -9,22 +9,22 @@ var camo = '{display: none !important; position: absolute !important; top: -1000
 var domains = {
 
     //Paypal
-    'facebook.com': {
-        hide: ['#pagelet_ego_pane']
+    "facebook.com": {
+        "hide": ["#pagelet_ego_pane"]
     },
 
     //Paypal
-    'paypal.com': {
-        run: function(){
-            if(document.location.pathname.indexOf('/clickthru/') > -1){
-                document.location = '/cgi-bin/webscr?cmd=_account';
+    "paypal.com": {
+        "run": function(){
+            if(document.location.pathname.indexOf("/clickthru/") > -1){
+                document.location = "/cgi-bin/webscr?cmd=_account";
             }
         }
     },
 
     //Upworthy
-    'upworthy.com': {
-        hide: ['#slider', '.modal', '.modal-backdrop']
+    "upworthy.com": {
+        "hide": ["#slider", ".modal", ".modal-backdrop"]
     }
 
 };
