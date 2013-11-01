@@ -8,9 +8,60 @@ var camo = '{display: none !important; position: absolute !important; top: -1000
 //Manifest of domains and the actions to take on each
 var domains = {
 
-    //Paypal
+    //Facebook
     "facebook.com": {
         "hide": ["#pagelet_ego_pane"]
+    },
+
+    //Intercom
+    "intercom.io": {
+        "run": function(){
+
+            //Define the polling function
+            var checkForNewConversation = function(){
+
+                var table = document.getElementById('conversationTable');
+                if(table){
+
+                    //Get the most recent id
+                    var key = 'latestConversationId';
+                    var latestId = document.querySelector('#conversationTable tbody tr').getAttribute('id');
+                    chrome.storage.sync.get(key, function(obj){
+
+                        if(obj[key] == latestId){
+
+                            //Check again
+                            setTimeout(checkForNewConversation, 5000);
+
+                        }
+                        else{
+
+                            //Store the latest id
+                            var latest = {};
+                            latest[key] = latestId;
+                            chrome.storage.sync.set(latest, function(){
+
+                                //Open an alert
+                                alert('New conversation!');
+
+                                //Check again
+                                setTimeout(checkForNewConversation, 5000);
+
+                            });
+
+
+                        }
+
+                    });
+
+                }
+
+            };
+
+            //Start polling
+            checkForNewConversation();
+        }
+
     },
 
     //Paypal
