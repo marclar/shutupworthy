@@ -90,6 +90,26 @@ var domains = {
 
     },
 
+    //OKC
+    "okcupid.com": {
+        "run": function(){
+
+            var links = document.getElementsByTagName('a');
+            for(var i = 0, j = links.length; i < j; i++){
+                var link = links[i];
+                var href = link.getAttribute('href');
+                console.log('href: ' + href);
+
+                //Link to photos first unless it's from the profile
+                if(href && (href.indexOf('/profile') !== -1) && (href.indexOf('photos?cf=') === -1) && href.indexOf('cf=profile') === -1){
+                    href = href.replace('?cf=', '/photos?cf=');
+                    link.setAttribute('href', href);
+                }
+            }
+
+        }
+    },
+
     //Paypal
     "paypal.com": {
         "run": function(){
