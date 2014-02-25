@@ -18,6 +18,17 @@ var domains = {
         "hide": ["#cart-upsell"]
     },
 
+    //A Soft Murmur
+    "asoftmurmur.com": {
+        "run": function(){
+            $('body').on('keypress', function(e){
+                if(e.keyCode === 32){ //spacebar
+                    $('#play-pause-button').click();
+                }
+            });
+        }
+    },
+
     //Facebook
     "facebook.com": {
         "hide": ["#pagelet_ego_pane", ".ego_column"]
