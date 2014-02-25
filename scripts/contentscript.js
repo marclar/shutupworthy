@@ -21,11 +21,21 @@ var domains = {
     //A Soft Murmur
     "asoftmurmur.com": {
         "run": function(){
-            $('body').on('keypress', function(e){
+
+            //Create click event
+            var clickEvent = document.createEvent('HTMLEvents');
+            clickEvent.initEvent('click', true, true);
+
+            //Listen for spacebar clicks
+            document.onkeypress = function (e) {
+                e = e || window.event;
                 if(e.keyCode === 32){ //spacebar
-                    $('#play-pause-button').click();
+                    document.getElementById('play-pause-button').dispatchEvent(clickEvent);
                 }
-            });
+                e.preventDefault();
+                e.stopPropagation();
+            };
+
         }
     },
 
