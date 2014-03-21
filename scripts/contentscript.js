@@ -10,6 +10,12 @@ function appendStyle(css){
     document.head.appendChild(style);
 };
 
+function click(el){
+    var clickEvent = document.createEvent('HTMLEvents');
+    clickEvent.initEvent('click', true, true);
+    el.dispatchEvent(clickEvent);
+}
+
 //Manifest of domains and the actions to take on each
 var domains = {
 
@@ -107,6 +113,34 @@ var domains = {
 
             //Start polling
             checkForNewConversation();
+        }
+
+    },
+
+    "mixpanel.com": {
+
+        "run": function(){
+
+            //Hide the "Show new actions" bar
+            appendStyle('.refresh_button_row * {display: none !important; }');
+            //appendStyle('.refresh_button_wrapper {display: none !important; }');
+
+
+            //Define the polling function
+            var poll = function(){
+
+                //Click the "Load X new actions" button
+                var btn = document.getElementById('refresh_button_wrapper');
+                click(btn);
+
+                //Poll again
+                setTimeout(poll, 1000);
+
+            };
+
+            //Start polling
+            poll();
+
         }
 
     },
