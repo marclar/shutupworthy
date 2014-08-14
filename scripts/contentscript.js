@@ -174,6 +174,15 @@ var domains = {
         }
     },
 
+    "producthunt.com": {
+        "run": function(){
+            var elements = document.getElementsByClassName('show-hidden-posts');
+            for (var i = 0, j = elements.length; i < j; i++) {
+                click(elements[i]);
+            }
+        }
+    },
+
     //Reddit
     "reddit.com": {
         "run": function(){
