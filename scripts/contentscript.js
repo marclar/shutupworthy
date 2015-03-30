@@ -204,6 +204,11 @@ var domains = {
     "stackexchange.com": {"hide": ["#overlay-header"]},
     "stackoverflow.com": {"hide": ["#overlay-header"]},
 
+    //Toggl
+    "toggl.com": {
+      "hide": [".timer-sticky"]
+    },
+
     //Tumblr
     "tumblr.com": {
         "hide": ["#tumblr_teaser_follow"]
