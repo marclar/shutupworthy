@@ -47,7 +47,49 @@ var domains = {
 
     //Facebook
     "facebook.com": {
-        "hide": ["#pagelet_ego_pane", ".ego_column"]
+        "hide": ["#pagelet_ego_pane", ".ego_column"],
+        "run": function(){
+
+
+          //Define the polling function
+          var poll = function(){
+
+            var divs = document.querySelectorAll('#contentCol .userContentWrapper');
+            divs = Array.prototype.slice.call(divs);
+            divs.forEach(function(div){
+
+              //Look for "Suggested Post"
+              var spans = div.querySelectorAll('span');
+              spans = Array.prototype.slice.call(spans);
+              spans.forEach(function(span){
+                if(span.innerHTML.length > 14){
+                  return;
+                }
+                else if(span.innerHTML !== 'Suggested Post'){
+                  return;
+                }
+                else{
+                  div.style.display = 'none';
+                }
+              });
+
+              //Look for "Sponsored"
+              var sponsored = div.querySelectorAll('.uiStreamSponsoredLink');
+              sponsored = Array.prototype.slice.call(sponsored);
+              sponsored.forEach(function(sponsor){
+                div.style.display = 'none';
+              });
+
+            });
+
+            setTimeout(poll, 1000);
+
+          };
+
+          //Start polling
+          poll();
+
+        }
     },
 
     //Forbes
